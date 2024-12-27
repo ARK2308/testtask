@@ -38,7 +38,15 @@ const AddProductForm = ({ products, setProducts }) => {
             id="productName"
             placeholder="Enter product name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              const regex = /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]*$/;
+              if (regex.test(value)) {
+                setName(value);
+              } else {
+                toast.error("Product name must contain letters and can include numbers or spaces.");
+              }
+            }}
             className="p-2 border rounded w-full"
           />
         </div>
