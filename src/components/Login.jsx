@@ -10,18 +10,26 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post("https://reqres.in/api/login", {
-        email,
-        password,
-      });
-      localStorage.setItem("user", JSON.stringify({ token: response.data.token }));
-      toast.success("Login successful!");
-      navigate("/home");
-    } catch (err) {
+    
+    if(password==="tailwind"){
+      try {
+        const response = await axios.post("https://reqres.in/api/login", {
+          email,
+          password,
+        });
+        localStorage.setItem("user", JSON.stringify({ token: response.data.token }));
+        toast.success("Login successful!");
+        navigate("/home");
+      } catch (err) {
+        toast.error("Invalid email or password");
+      }
+    }else{
+      alert("Invalid email or password")
       toast.error("Invalid email or password");
     }
+  
+
+
   };
    useEffect(() => {
       // Redirect to login page if the user is not logged in
