@@ -13,6 +13,8 @@ const Home = () => {
     // Redirect to login page if the user is not logged in
     if (!localStorage.getItem("user")) {
       navigate("/"); // Redirect to login page if not logged in
+    }else{
+      navigate("/home")
     }
   }, [navigate]);
 

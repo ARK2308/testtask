@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
-
+   
   return (
     <Router>
       <ToastContainer  position="top-right" autoClose={1000} />

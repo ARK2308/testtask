@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -23,6 +23,14 @@ const Login = () => {
       toast.error("Invalid email or password");
     }
   };
+   useEffect(() => {
+      // Redirect to login page if the user is not logged in
+      if (!localStorage.getItem("user")) {
+        navigate("/"); // Redirect to login page if not logged in
+      }else{
+        navigate("/home")
+      }
+    }, [navigate]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
