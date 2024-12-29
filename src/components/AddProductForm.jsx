@@ -12,7 +12,12 @@ const AddProductForm = ({ products, setProducts }) => {
       toast.error("Please fill out all fields!");
       return;
     }
-    if (products.some((product) => product.name === name)) {
+    // Convert product names to lowercase for case-insensitive comparison
+    if (
+      products.some(
+        (product) => product.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       toast.warn("Product already exists!");
       return;
     }
@@ -44,7 +49,9 @@ const AddProductForm = ({ products, setProducts }) => {
               if (regex.test(value)) {
                 setName(value);
               } else {
-                toast.error("Product name must contain letters and can include numbers or spaces.");
+                toast.error(
+                  "Product name must contain letters and can include numbers or spaces."
+                );
               }
             }}
             className="p-2 border rounded w-full"
